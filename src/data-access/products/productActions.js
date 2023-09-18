@@ -1,5 +1,5 @@
 module.exports = function productActions({pool}){
-    return Object.freeze({addNewProduct, getSpecificProduct});
+    return Object.freeze({addNewProduct, getSpecificProduct,getAllProduct   });
 
     async function addNewProduct(prodDetails){
         const {barcode, productName, productDesc, size, price} = prodDetails;
@@ -32,5 +32,17 @@ module.exports = function productActions({pool}){
         }
 
 
+    }
+
+    async function getAllProduct(){
+        
+        let sql = `Select * from product_info`
+
+        try {
+            let result = await pool.query(sql);
+            return result;
+        } catch (error) {
+            console.log("ERROR:", error);
+        }
     }
 }
