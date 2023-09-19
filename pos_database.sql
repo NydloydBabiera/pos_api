@@ -31,6 +31,7 @@ drop table if exists transaction_info;
 CREATE TABLE transaction_info(
 	transaction_id SERIAL NOT NULL PRIMARY KEY,
 	transaction_code VARCHAR(255),
+	transaction_status varchar(255),
 	date_trans DATE,
 	amt_total float,
 	amt_paid float,

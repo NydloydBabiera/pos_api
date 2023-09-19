@@ -24,7 +24,7 @@ module.exports = function productActions({pool}){
         let sql = `Select * from product_info where barcode = $1`;
         let param = [productCode];
 
-        try {
+            try {
             let result = await pool.query(sql, param)
             return result;
         } catch (error) {

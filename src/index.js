@@ -8,12 +8,14 @@ const path = require("path");
 const server = require("http").createServer(app);
 
 var productRoute = require("./routes/products");
+var userRoute = require("./routes/users");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 app.use("/products", productRoute);
+app.use("/user", userRoute);
 app.use(express.static(path.join(__dirname, "public")));
 
 app.listen(process.env.PORT, () => {
