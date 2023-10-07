@@ -2,7 +2,8 @@ const{
     addNewProductUC,
     getSpecificProductUC,
     getAllProductUC,
-    addUserUC
+    addUserUC,
+    loginUserUC
 } = require("../use-cases")
 
 //product controller directory
@@ -12,6 +13,7 @@ const getAllProductControl = require("./products/getAllProductController");
 
 //user controller directory
 const addUserControl = require("./users/addUserController");
+const loginUserControl = require("./users/loginUserController");
 
 //controller execution
 const addNewProductController = addNewProductControl({addNewProductUC});
@@ -20,9 +22,12 @@ const getAllProductController = getAllProductControl({getAllProductUC})
 
 //user controller execution
 const addUserController = addUserControl({addUserUC});
+const loginUserController = loginUserControl({loginUserUC});
+
 module.exports = {
     addNewProductController,
     getSpecificProdController,
     getAllProductController,
-    addUserController
+    addUserController,
+    loginUserController
 }

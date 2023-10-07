@@ -1,19 +1,17 @@
-module.exports = function addProduct({ getSpecificProductUC }) {
+module.exports = function loginUser({ loginUserUC }) {
     return async function post(httpRequest) {
       try {
-        const productCode = httpRequest.params.id;
+        const userCredentials = httpRequest.body;
 
-       
-  
         // Usecase
-        const result = await getSpecificProductUC(productCode);
+        const result = await loginUserUC(userCredentials);
         if (result) {
           return {
             headers: {
               "Content-Type": "application/json",
             },
             status: 201,
-            body: result.rows, //,"Success!"
+            body: result, //,"Success!"
           };
         } else {
           return {

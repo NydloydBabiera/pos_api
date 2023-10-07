@@ -19,9 +19,9 @@ module.exports = function productActions({pool}){
     }
 
     async function getSpecificProduct(productCode){
-        const {barcode} = productCode;
-
-        let sql = `Select * from product_info where barcode = $1`;
+        // const barcode = productCode;
+        
+        let sql = `Select * from product_info where name_prod = $1`;
         let param = [productCode];
 
             try {
