@@ -1,5 +1,5 @@
 module.exports = function userActions({pool}){
-    return Object.freeze({addNewUser, loginUser});
+    return Object.freeze({addNewUser, loginUser,getAllUser});
 
     async function addNewUser(userDetails){
         const {fullName, userName, user_password, user_role} = userDetails;
@@ -30,6 +30,18 @@ module.exports = function userActions({pool}){
             return result;
         } catch (error) {
             console.log("ERROR:", error);
+        }
+    }
+
+    async function getAllUser(){
+        let sql = `select * from user_info`;
+
+        try {
+            let result = await pool.query(sql);
+
+            return result;
+        } catch (error) {
+            console.log("ERROR:",error);
         }
     }
 }
