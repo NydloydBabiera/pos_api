@@ -19,25 +19,27 @@ module.exports = function transactionActions({
 
     async function saveTransaction(tranactionDetails) {
 
+
+
         let {
             transaction_code,
             date_trans,
             amt_total,
             amt_paid,
             payment_type,
+            cashier_id,
             customer_id,
             transaction_status
         } = tranactionDetails;
 
         let sql = `INSERT INTO public.transaction_info(transaction_code, date_trans, 
             amt_total, amt_paid, payment_type, cashier_id, customer_id, transaction_status)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
 
-        let param = [transaction_code, date_trans, amt_total, amt_paid, payment_type, customer_id, transaction_status];
+        let param = [transaction_code, date_trans, amt_total, amt_paid, payment_type, cashier_id, customer_id, transaction_status];
 
         try {
             let result = await pool.query(sql, param);
-
             return result;
         } catch (error) {
             console.log("ERROR:", error);
@@ -46,6 +48,7 @@ module.exports = function transactionActions({
     }
 
     async function saveTransactionLine(transLine) {
+
         let {
             transaction_id,
             product_id,
@@ -60,7 +63,7 @@ module.exports = function transactionActions({
         ];
 
         let sql = `INSERT INTO public.transaction_line( transaction_id, product_id, qty_prod, amt_total_lines)
-            VALUES (?, ?, ?, ?);`
+            VALUES ($1, $2, $3, $4) RETURNING *`;
 
         try {
             let result = await pool.query(sql, param);
