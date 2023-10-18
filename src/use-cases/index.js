@@ -1,5 +1,6 @@
 const productDataAccess = require("../data-access/products");
 const userDataAccess = require("../data-access/users");
+const transDataAccess = require("../data-access/transactions")
 
 //products use-case directory
 const addNewProduct = require("./products/addProductUC");
@@ -10,18 +11,37 @@ const getAllProduct = require("./products/getAllProductUC");
 const addUser = require("./users/addUserUC");
 const loginUser = require("./users/loginUserUC");
 
+// transaction use-case directory
+const saveTransaciton = require("./transactions/saveTransactionUC");
+
 //products use-case execution
-const addNewProductUC = addNewProduct({productDataAccess});
-const getSpecificProductUC = getSpecifictProduct({productDataAccess});
-const getAllProductUC = getAllProduct({productDataAccess});
+const addNewProductUC = addNewProduct({
+    productDataAccess
+});
+const getSpecificProductUC = getSpecifictProduct({
+    productDataAccess
+});
+const getAllProductUC = getAllProduct({
+    productDataAccess
+});
 
 //product use-case execution
-const addUserUC = addUser({userDataAccess});
-const loginUserUC = loginUser({userDataAccess});
+const addUserUC = addUser({
+    userDataAccess
+});
+const loginUserUC = loginUser({
+    userDataAccess
+});
+
+// transaction use-case execution
+const saveTransactionUC = saveTransaciton({
+    transDataAccess
+})
 module.exports = {
     addNewProductUC,
     getSpecificProductUC,
     getAllProductUC,
     addUserUC,
-    loginUserUC
+    loginUserUC,
+    saveTransactionUC
 }
