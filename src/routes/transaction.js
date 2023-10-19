@@ -5,10 +5,13 @@ const {
 const router = express.Router();
 
 const {
-    saveTransactionController
+    saveTransactionController,
+    getAllTransactionController
 } = require("../controller")
 const makeExpressCallback = require("../express-callback");
 
 router.post("/saveTransaction", makeExpressCallback(saveTransactionController));
+router.get("/getAllTransaction", makeExpressCallback(getAllTransactionController));
+
 
 module.exports = router;

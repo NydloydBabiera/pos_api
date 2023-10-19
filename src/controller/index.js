@@ -4,7 +4,8 @@ const {
     getAllProductUC,
     addUserUC,
     loginUserUC,
-    saveTransactionUC
+    saveTransactionUC,
+    getAllTransactionUC
 } = require("../use-cases")
 
 //product controller directory
@@ -18,7 +19,7 @@ const loginUserControl = require("./users/loginUserController");
 
 // transaction controller directory
 const saveTransactionControl = require("./transaction/saveTransactionController");
-
+const getAllTransactionControl = require("./transaction/getAllTransactionController");
 
 //controller execution
 const addNewProductController = addNewProductControl({
@@ -43,11 +44,15 @@ const loginUserController = loginUserControl({
 const saveTransactionController = saveTransactionControl({
     saveTransactionUC
 })
+const getAllTransactionController = getAllTransactionControl({
+    getAllTransactionUC
+})
 module.exports = {
     addNewProductController,
     getSpecificProdController,
     getAllProductController,
     addUserController,
     loginUserController,
-    saveTransactionController
+    saveTransactionController,
+    getAllTransactionController
 }

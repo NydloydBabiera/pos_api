@@ -4,7 +4,8 @@ module.exports = function transactionActions({
     return Object.freeze({
         saveTransaction,
         getDRtransCode,
-        saveTransactionLine
+        saveTransactionLine,
+        getAllTransactions
     });
 
     async function getDRtransCode() {
@@ -68,6 +69,17 @@ module.exports = function transactionActions({
         try {
             let result = await pool.query(sql, param);
 
+            return result;
+        } catch (error) {
+            console.log("ERROR:", error);
+        }
+    }
+
+    async function getAllTransactions() {
+        let sql = `Select * from transaction_info`
+
+        try {
+            let result = await pool.query(sql);
             return result;
         } catch (error) {
             console.log("ERROR:", error);

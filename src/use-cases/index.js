@@ -13,6 +13,7 @@ const loginUser = require("./users/loginUserUC");
 
 // transaction use-case directory
 const saveTransaciton = require("./transactions/saveTransactionUC");
+const getAllTransaction = require("./transactions/getAllTransactionUC");
 
 //products use-case execution
 const addNewProductUC = addNewProduct({
@@ -37,11 +38,16 @@ const loginUserUC = loginUser({
 const saveTransactionUC = saveTransaciton({
     transDataAccess
 })
+const getAllTransactionUC = getAllTransaction({
+    transDataAccess
+})
+
 module.exports = {
     addNewProductUC,
     getSpecificProductUC,
     getAllProductUC,
     addUserUC,
     loginUserUC,
-    saveTransactionUC
+    saveTransactionUC,
+    getAllTransactionUC
 }
