@@ -76,6 +76,8 @@ module.exports = function transactionActions({
     }
 
     async function getAllTransactions() {
+        
+        
         let sql = `Select * from transaction_info`
 
         try {
