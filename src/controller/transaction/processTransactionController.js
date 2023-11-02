@@ -3,10 +3,9 @@ module.exports = function saveTransaction({
 }) {
     return async function post(httpRequest) {
         try {
-            const product_id = httpRequest.params.id;
-
+            const tranactionDetails = httpRequest.body;
             // Usecase
-            const result = await processTransactionUC(product_id);
+            const result = await processTransactionUC(tranactionDetails);
             if (result) {
                 return {
                     headers: {

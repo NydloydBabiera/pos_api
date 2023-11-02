@@ -6,7 +6,7 @@ module.exports = function transactionActions({ pool }) {
     getAllTransactions,
     getHeaderTransaction,
     getTransactionLine,
-    processTransaction
+    processTransaction,
   });
 
   async function getDRtransCode() {
@@ -113,12 +113,14 @@ module.exports = function transactionActions({ pool }) {
     }
   }
 
-  async function processTransaction(product_id) {
-    let sql = `update transaction_info
-    set transaction_status = 'PR'
-    where transaction_id = $1 RETURNING *`;
+  async function processTransaction(tranactionDetails) {
+    let { transaction_id, cashier_id, amt_paid } = tranactionDetails;
 
-    param = [product_id];
+    let sql = `update transaction_info
+    set transaction_status = 'PR', amt_paid = $1, cashier_id = $2
+    where transaction_id = $3 RETURNING *`;
+
+    param = [amt_paid, cashier_id, transaction_id];
 
     try {
       let result = await pool.query(sql, param);
