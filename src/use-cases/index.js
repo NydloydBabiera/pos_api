@@ -16,6 +16,8 @@ const getAllUser = require("./users/getAllUsersUC");
 const saveTransaciton = require("./transactions/saveTransactionUC");
 const getAllTransaction = require("./transactions/getAllTransactionUC");
 const socketTransaction = require("./transactions/socketAllTransactionUC");
+const getSpecificTransaction = require("./transactions/getSpecificTransactionUC");
+const processTransaction = require("./transactions/processTransactionUC");
 
 //products use-case execution
 const addNewProductUC = addNewProduct({
@@ -44,6 +46,8 @@ const getAllTransactionUC = getAllTransaction({
   transDataAccess,
 });
 const socketTransactionUC = socketTransaction({ transDataAccess });
+const getSpecificTransactionUC = getSpecificTransaction({ transDataAccess });
+const processTransactionUC = processTransaction({ transDataAccess });
 
 const getAllUserUC = getAllUser({ userDataAccess });
 module.exports = {
@@ -56,4 +60,6 @@ module.exports = {
   getAllTransactionUC,
   getAllUserUC,
   socketTransactionUC,
+  getSpecificTransactionUC,
+  processTransactionUC
 };

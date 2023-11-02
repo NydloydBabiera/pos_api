@@ -1,13 +1,15 @@
 const {
-    addNewProductUC,
-    getSpecificProductUC,
-    getAllProductUC,
-    addUserUC,
-    loginUserUC,
-    getAllUserUC,
-    saveTransactionUC,
-    getAllTransactionUC
-} = require("../use-cases")
+  addNewProductUC,
+  getSpecificProductUC,
+  getAllProductUC,
+  addUserUC,
+  loginUserUC,
+  getAllUserUC,
+  saveTransactionUC,
+  getAllTransactionUC,
+  getSpecificTransactionUC,
+  processTransactionUC,
+} = require("../use-cases");
 
 //product controller directory
 const addNewProductControl = require("./products/addProductController");
@@ -17,46 +19,56 @@ const getAllProductControl = require("./products/getAllProductController");
 //user controller directory
 const addUserControl = require("./users/addUserController");
 const loginUserControl = require("./users/loginUserController");
+const getAllUserControl = require("./users/getAllUserController");
 
 // transaction controller directory
 const saveTransactionControl = require("./transaction/saveTransactionController");
 const getAllTransactionControl = require("./transaction/getAllTransactionController");
-const getAllUserControl = require("./users/getAllUserController");
+const getSpecificTransactionControl = require("./transaction/getSpecificTransactionController");
+const processTransactionControl = require("./transaction/processTransactionController");
 
 //controller execution
 const addNewProductController = addNewProductControl({
-    addNewProductUC
+  addNewProductUC,
 });
 const getSpecificProdController = getSpecificProdControl({
-    getSpecificProductUC
+  getSpecificProductUC,
 });
 const getAllProductController = getAllProductControl({
-    getAllProductUC
-})
+  getAllProductUC,
+});
 
 //user controller execution
 const addUserController = addUserControl({
-    addUserUC
+  addUserUC,
 });
 const loginUserController = loginUserControl({
-    loginUserUC
+  loginUserUC,
 });
-const getAllUserController = getAllUserControl({getAllUserUC});
+const getAllUserController = getAllUserControl({ getAllUserUC });
 
 // transaction controller execution
 const saveTransactionController = saveTransactionControl({
-    saveTransactionUC
-})
+  saveTransactionUC,
+});
 const getAllTransactionController = getAllTransactionControl({
-    getAllTransactionUC
-})
+  getAllTransactionUC,
+});
+const getSpecificTransactionController = getSpecificTransactionControl({
+  getSpecificTransactionUC,
+});
+const processTransactionController = processTransactionControl({
+  processTransactionUC,
+});
 module.exports = {
-    addNewProductController,
-    getSpecificProdController,
-    getAllProductController,
-    addUserController,
-    loginUserController,
-    saveTransactionController,
-    getAllTransactionController,
-    getAllUserController
-}
+  addNewProductController,
+  getSpecificProdController,
+  getAllProductController,
+  addUserController,
+  loginUserController,
+  saveTransactionController,
+  getAllTransactionController,
+  getAllUserController,
+  getSpecificTransactionController,
+  processTransactionController
+};

@@ -38,32 +38,30 @@ app.use(express.static(path.join(__dirname, "public")));
 const wss = new WebSocket.Server({ server });
 
 wss.on("connection", (ws) => {
-  console.log("Client connected");
+  // console.log("Client connected");
 
   ws.on("message", (message) => {
-    console.log(`Received: ${message}`);
+    // console.log(`Received: ${message}`);
 
     const result = socketTransactionUC(ws);
-    let x = 0;
     // POS
-    wss.clients.forEach((client) => {
-      x++;
-      // if (client !== ws && client.readyState === WebSocket.OPEN) {
-        console.log("send", x);
-        result
-          .then((result) => {
-            // console.log("result:",result.rows);
-            ws.send(JSON.stringify(result.rows));
-          })
-          .catch((error) => {
-            console.error("Rejected:", error);
-          });
-      // }
-    });
+    // wss.clients.forEach((client) => {
+    //   // if (client !== ws && client.readyState === WebSocket.OPEN) {
+    //     console.log("send", x);
+    //     result
+    //       .then((result) => {
+    //         // console.log("result:",result.rows);
+    //         ws.send(JSON.stringify(result.rows));
+    //       })
+    //       .catch((error) => {
+    //         console.error("Rejected:", error);
+    //       });
+    //   // }
+    // });
   });
 
   ws.on("close", () => {
-    console.log("Client disconnected");
+    // console.log("Client disconnected");
   });
 });
 
