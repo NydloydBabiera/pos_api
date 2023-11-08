@@ -9,6 +9,7 @@ const {
   getAllTransactionUC,
   getSpecificTransactionUC,
   processTransactionUC,
+  updatePasswordUC
 } = require("../use-cases");
 
 //product controller directory
@@ -20,6 +21,7 @@ const getAllProductControl = require("./products/getAllProductController");
 const addUserControl = require("./users/addUserController");
 const loginUserControl = require("./users/loginUserController");
 const getAllUserControl = require("./users/getAllUserController");
+const updatePasswordControl = require("./users/updatePasswordController")
 
 // transaction controller directory
 const saveTransactionControl = require("./transaction/saveTransactionController");
@@ -45,7 +47,12 @@ const addUserController = addUserControl({
 const loginUserController = loginUserControl({
   loginUserUC,
 });
-const getAllUserController = getAllUserControl({ getAllUserUC });
+const getAllUserController = getAllUserControl({
+  getAllUserUC
+});
+const updatePasswordController = updatePasswordControl({
+  updatePasswordUC
+})
 
 // transaction controller execution
 const saveTransactionController = saveTransactionControl({
@@ -70,5 +77,6 @@ module.exports = {
   getAllTransactionController,
   getAllUserController,
   getSpecificTransactionController,
-  processTransactionController
+  processTransactionController,
+  updatePasswordController
 };

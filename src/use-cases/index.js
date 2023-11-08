@@ -11,6 +11,7 @@ const getAllProduct = require("./products/getAllProductUC");
 const addUser = require("./users/addUserUC");
 const loginUser = require("./users/loginUserUC");
 const getAllUser = require("./users/getAllUsersUC");
+const updatePassword = require("./users/updatePasswordUC")
 
 // transaction use-case directory
 const saveTransaciton = require("./transactions/saveTransactionUC");
@@ -30,7 +31,7 @@ const getAllProductUC = getAllProduct({
   productDataAccess,
 });
 
-//product use-case execution
+//users use-case execution
 const addUserUC = addUser({
   userDataAccess,
 });
@@ -38,6 +39,12 @@ const loginUserUC = loginUser({
   userDataAccess,
 });
 
+const getAllUserUC = getAllUser({
+  userDataAccess
+});
+const updatePasswordUC = updatePassword({
+  userDataAccess
+})
 // transaction use-case execution
 const saveTransactionUC = saveTransaciton({
   transDataAccess,
@@ -45,11 +52,16 @@ const saveTransactionUC = saveTransaciton({
 const getAllTransactionUC = getAllTransaction({
   transDataAccess,
 });
-const socketTransactionUC = socketTransaction({ transDataAccess });
-const getSpecificTransactionUC = getSpecificTransaction({ transDataAccess });
-const processTransactionUC = processTransaction({ transDataAccess });
+const socketTransactionUC = socketTransaction({
+  transDataAccess
+});
+const getSpecificTransactionUC = getSpecificTransaction({
+  transDataAccess
+});
+const processTransactionUC = processTransaction({
+  transDataAccess
+});
 
-const getAllUserUC = getAllUser({ userDataAccess });
 module.exports = {
   addNewProductUC,
   getSpecificProductUC,
@@ -61,5 +73,6 @@ module.exports = {
   getAllUserUC,
   socketTransactionUC,
   getSpecificTransactionUC,
-  processTransactionUC
+  processTransactionUC,
+  updatePasswordUC
 };
