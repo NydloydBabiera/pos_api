@@ -8,7 +8,8 @@ const {
     addUserController,
     loginUserController,
     getAllUserController,
-    updatePasswordController
+    updatePasswordController,
+    deleteUserController
 } = require("../controller")
 const makeExpressCallback = require("../express-callback");
 
@@ -16,4 +17,5 @@ router.post("/addUser", makeExpressCallback(addUserController));
 router.post("/loginUser", makeExpressCallback(loginUserController));
 router.get("/getAllUsers", makeExpressCallback(getAllUserController));
 router.put("/updatePassword", makeExpressCallback(updatePasswordController))
+router.delete("/deleteUser/:id", makeExpressCallback(deleteUserController))
 module.exports = router;
